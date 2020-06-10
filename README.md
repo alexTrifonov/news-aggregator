@@ -4,10 +4,10 @@
 Web-приложение агрегатор новостей на базе Spring Boot, Vue.js. Собирается в исполняемый jar-файл модуля news-aggregator-backend.
 В качестве базы данных используется PostgreSQL 12. В качестве реализации спецификации JPA используется Hibernate.
 Для использования приложения необходимо в кластере PostgresSQL:
-•	создать пользователя aggregator.
-•	создать базу данных aggregator_db и присвоить ей владельца aggregator.
-•	в базе данных aggregator_db создать схему aggregator.
-•	создать таблицы category, expense, скрипт создания расположен в expense-backend\src\main\resources\schema.sql
+- создать пользователя aggregator.
+- создать базу данных aggregator_db и присвоить ей владельца aggregator.
+- в базе данных aggregator_db создать схему aggregator.
+- создать таблицы category, expense, скрипт создания расположен в expense-backend\src\main\resources\schema.sql
 Для получения новостей необходимо добавить объект Шаблон источника новостей: ввести адрес источника, указать его тип
 (веб-сайт или rss лента),ввести часовой пояс источника и шаблоны для парсинга элемента новости, адреса новости,
  времени новости, заголовка новости. После добавления Шаблон источника новостей начинают добавляться новости со временем 
@@ -18,69 +18,69 @@ Web-приложение агрегатор новостей на базе Sprin
 Шаблоны указываются в формате выражения XPath.
 
 Пример элемента новости с сайта https://lenta.ru/parts/news:
-<div class="item news" data-more-url="/parts/news/?after=1591775865">
-	<div class="info g-date item__info">
-		<a target="_blank" class="rubric item__rubric"	href="/rubrics/media/">
-			Интернет и СМИ
-		</a>
-		<span class="item__mdash">—&nbsp;</span>
-		10:57
-	</div>
-	 <div class="titles">
-		<h3>
-			<a target="_blank" href="/news/2020/06/10/yandex/">
-				В сети вступились за&nbsp;отказавшегося везти чернокожего студента таксиста
+	<div class="item news" data-more-url="/parts/news/?after=1591775865">
+		<div class="info g-date item__info">
+			<a target="_blank" class="rubric item__rubric"	href="/rubrics/media/">
+				Интернет и СМИ
 			</a>
-		</h3>
-	 </div>
-</div>
+			<span class="item__mdash">—&nbsp;</span>
+			10:57
+		</div>
+		<div class="titles">
+			<h3>
+				<a target="_blank" href="/news/2020/06/10/yandex/">
+					В сети вступились за&nbsp;отказавшегося везти чернокожего студента таксиста
+				</a>
+			</h3>
+		</div>
+	</div>
 
 Для данного элемента новости:
-Шаблон для элемента с новостью: //div[@class='item news']
-Шаблон для элемента адреса новости: .//div[@class='titles']//a
-Шаблон для элемента времени новости: .//div[@class='info g-date item__info']
-Шаблон для элемента заголовка новости: .//div[@class='titles']//a
-Часовой пояс: UTC+03:00
+- Шаблон для элемента с новостью: //div[@class='item news']
+- Шаблон для элемента адреса новости: .//div[@class='titles']//a
+- Шаблон для элемента времени новости: .//div[@class='info g-date item__info']
+- Шаблон для элемента заголовка новости: .//div[@class='titles']//a
+- Часовой пояс: UTC+03:00
 
 
 Пример элемента новости rss ленты https://lenta.ru/rss:
-<item>
-  <guid>https://lenta.ru/news/2020/06/08/champion/</guid>
-  <title>В сожженной мечети в Ливии нашли надписи «Зенит чемпион», 14/88 и банку от тушенки</title>
-  <link>https://lenta.ru/news/2020/06/08/champion/</link>
-  <description>
-    <![CDATA[В районе ливийского города Айн Зара, расположенного неподалеку от Триполи,
-	сожгли одну из мечетей. Как утверждает The Libya Observer, это сделали российские наемники.
-	На снятом внутри мечети видео запечатлены надписи «в цветах Зенита нету черного!»
-	, «Зенит чемпион», «White Power» и 14/88.]]>
-  </description>
-  <pubDate>Mon, 08 Jun 2020 19:28:00 +0300</pubDate>
-  <enclosure
-   url="https://icdn.lenta.ru/images/2020/06/08/19/20200608191932670/pic_1947551a8e9e3121bb7d8b96bf20aaec.jpg"
-   type="image/jpeg"
-   length="47802"
-   />
-  <category>Мир</category>
-</item>
+	<item>
+	<guid>https://lenta.ru/news/2020/06/08/champion/</guid>
+	<title>В сожженной мечети в Ливии нашли надписи «Зенит чемпион», 14/88 и банку от тушенки</title>
+	<link>https://lenta.ru/news/2020/06/08/champion/</link>
+	<description>
+		<![CDATA[В районе ливийского города Айн Зара, расположенного неподалеку от Триполи,
+		сожгли одну из мечетей. Как утверждает The Libya Observer, это сделали российские наемники.
+		На снятом внутри мечети видео запечатлены надписи «в цветах Зенита нету черного!»
+		, «Зенит чемпион», «White Power» и 14/88.]]>
+	</description>
+	<pubDate>Mon, 08 Jun 2020 19:28:00 +0300</pubDate>
+	<enclosure
+	url="https://icdn.lenta.ru/images/2020/06/08/19/20200608191932670/pic_1947551a8e9e3121bb7d8b96bf20aaec.jpg"
+	type="image/jpeg"
+	length="47802"
+	/>
+	<category>Мир</category>
+	</item>
 
 Для данного элемента новости:
-Шаблон для элемента с новостью: //item
-Шаблон для элемента адреса новости: ./link
-Шаблон для элемента времени новости: ./pubDate
-Шаблон для элемента заголовка новости: ./title
-Часовой пояс: UTC+03:00
+- Шаблон для элемента с новостью: //item
+- Шаблон для элемента адреса новости: ./link
+- Шаблон для элемента времени новости: ./pubDate
+- Шаблон для элемента заголовка новости: ./title
+- Часовой пояс: UTC+03:00
 
 
 Пример шаблонов для сайта https://www.rbc.ru/short_news
-Шаблон для элемента с новостью: //div[@class='js-news-feed-item js-yandex-counter']
-Шаблон для элемента адреса новости: .//a[@class='item__link']
-Шаблон для элемента времени новости: .//span[@class='item__category']
-Шаблон для элемента заголовка новости: .//span[@class='item__title rm-cm-item-text']
-Часовой пояс: UTC+03:00
+- Шаблон для элемента с новостью: //div[@class='js-news-feed-item js-yandex-counter']
+- Шаблон для элемента адреса новости: .//a[@class='item__link']
+- Шаблон для элемента времени новости: .//span[@class='item__category']
+- Шаблон для элемента заголовка новости: .//span[@class='item__title rm-cm-item-text']
+- Часовой пояс: UTC+03:00
 
 Пример шаблонов для rss ленты http://static.feed.rbc.ru/rbc/logical/footer/news.rss 
-Шаблон для элемента с новостью: //item
-Шаблон для элемента адреса новости: ./link
-Шаблон для элемента времени новости: ./pubDate
-Шаблон для элемента заголовка новости: ./title
-Часовой пояс: UTC+03:00
+- Шаблон для элемента с новостью: //item
+- Шаблон для элемента адреса новости: ./link
+- Шаблон для элемента времени новости: ./pubDate
+- Шаблон для элемента заголовка новости: ./title
+- Часовой пояс: UTC+03:00
