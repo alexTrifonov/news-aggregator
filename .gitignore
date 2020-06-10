@@ -1,0 +1,35 @@
+*.class
+
+.factorypath
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# Eclipse #
+.settings
+.project
+.classpath
+.studio
+target
+/src
+
+
+
+
+
+
+
+news-aggregator-backend/target
+news-aggregator-backend/.mvn
+news-aggregator-backend/mvnw
+news-aggregator-backend/src/main/webapp
+news-aggregator-frontend/src/dist/
+news-aggregator-frontend/node/
+news-aggregator-frontend/node_modules/
+news-aggregator-frontend/src/node_modules/
+news-aggregator-frontend/npm-debug.log
+news-aggregator-frontend/target
+
+!.mvn/wrapper/maven-wrapper.jar
